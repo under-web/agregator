@@ -1,20 +1,20 @@
 import requests
 from bs4 import BeautifulSoup
-
+import re
 #вынимает все ссылки из сайта новостей
 
 
-url = "https://www.rbc.ru/" #таргет
+url = "https://www.rbc.ru/"
 
 
-r = requests.get(url)                  #передаем урл в реквест через метод get
-soup = BeautifulSoup(r.text , 'lxml')   #создаем обьект супа  парсим библиотекой lxml
+r = requests.get(url)
+soup = BeautifulSoup(r.text , 'lxml')
 
 
-pages = soup.find_all('a')  #ищем все элементы А
+pages = soup.find_all('a', href=re.compile('www')) #находит ссылки с атрибутом "www" в атрибутах с тегом href
 
-for a in pages:  #цикл построчно печатать 
-	links = a.get('href') # в массиве обьекта супа взять все href
-	print(links)
+for a in pages:
+ links = a.get('href') # цикл построчно взять элемент href
+ print(links)
 
 
