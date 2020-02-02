@@ -49,7 +49,7 @@ print()
 
 pag = soup.find('a', class_= "main__big__link js-yandex-counter")  #взял блок "а" 
 link = pag.get('href') #взял ссылку из элемента href
-print(pag.text)
+print(pag.text)# почему то выдает пустоты между строк при печати
 print(link)
 
 
