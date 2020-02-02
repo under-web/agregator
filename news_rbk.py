@@ -11,7 +11,7 @@ url6 = "https://www.tatpressa.ru/"
 url7 = "https://www.tatar-inform.ru/"
 url8 = "https://ria.ru/location_Tatarstan/"
 url9 = "http://bugulma-tatarstan.ru/"
-
+#нужно написать функцию
 r = requests.get(url)
 r2 = requests.get(url2)
 r3 = requests.get(url3)
