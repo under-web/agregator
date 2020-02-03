@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 #Пишем новостной парсер
 
 url = "https://rt.rbc.ru/"
-url2 = "https://svpressa.ru/society/article/255256/"
+url2 = "https://svpressa.ru/"
 url3 = "https://lenta.ru/news/2020/01/27/million/"
 url4 = "https://ria.ru/location_Russia/"
 url5 = "https://www.vesti.ru/news/"
@@ -11,7 +11,6 @@ url6 = "https://www.tatpressa.ru/"
 url7 = "https://www.tatar-inform.ru/"
 url8 = "https://ria.ru/location_Tatarstan/"
 url9 = "http://bugulma-tatarstan.ru/"
-urlvir = "https://gisanddata.maps.arcgis.com/apps/opsdashboard/index.html#/bda7594740fd40299423467b48e9ecf6"
 
 r = requests.get(url)
 r2 = requests.get(url2)
@@ -22,7 +21,7 @@ r6 = requests.get(url6)
 r7 = requests.get(url7)
 r8 = requests.get(url8)
 r9 = requests.get(url9)
-rvir = requests.get(urlvir)
+
 
 soup = BeautifulSoup(r.text, 'lxml')
 soup2 = BeautifulSoup(r2.text, 'lxml')
@@ -33,7 +32,7 @@ soup6 = BeautifulSoup(r6.text, 'lxml')
 soup7 = BeautifulSoup(r7.text, 'lxml')
 soup8 = BeautifulSoup(r8.text, 'lxml')
 soup9 = BeautifulSoup(r9.text, 'lxml')
-soupvir = BeautifulSoup(rvir.text, 'lxml')
+
 
 
 print("Agregator_news v1.3")
@@ -47,13 +46,15 @@ print()
 print()
 print()
 
-pag = soup.find('a', class_= "main__big__link js-yandex-counter")  #взял блок "а" 
-link = pag.get('href') #взял ссылку из элемента href
-print(pag.text)# почему то выдает пустоты между строк при печати
-print(link)
+pag = soup.find('a', class_= "main__big__link js-yandex-counter")                              #взял блок "а"
+link = pag.get('href')                                                                          #взял ссылку из элемента href
+print(pag.text + link)
+print()
 
+pag2 = soup2.find('a', class_= "b-article__title b-article__title_main")
+link2 = pag2.get('href')                                                                          #взял ссылку из элемента href
+print(pag2.text, 'https://svpressa.ru' + link2)  #здесь ссылка неполная добавил домен сайта
 
-print(soup2.find('h1', class_= "b-text__title").text, "(Свободная пресса)")
 print(soup3.find('h1', class_= "b-topic__title").text, "(Лента.ру)")
 print(soup4.find('a', class_= "list-item__title color-font-hover-only").text, "(Риа новости)")
 print(soup5.find('h3', class_= "b-item__title").text, "(Вести)")
