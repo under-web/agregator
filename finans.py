@@ -8,7 +8,7 @@ def get_html(url):
 }
     r = requests.get(url, headers=headers, timeout=5)
     if r.status_code == 200:
-        print('Все в норме!')
+        print('Ок!')
  
     if r.status_code == 404:
         print('Страница не существует!')
@@ -22,11 +22,18 @@ def get_page_data(html):
 	print(diapason)
 
 def main():
-	
+	art = '''
+	(\___/)
+	(='.'=)
+	(")_(")
+
+	'''
+
 	url = 'https://ru.investing.com/equities/tatneft_rts'
 	html = get_html(url)
+	print(art)
 	get_page_data(html)
-
+	input()
 
 
 
